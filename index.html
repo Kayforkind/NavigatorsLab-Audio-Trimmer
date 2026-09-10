@@ -1,0 +1,112 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio Trimmer — free, in your browser — NavigatorsLab</title>
+<meta name="description" content="Cut voice notes and clips on a waveform Free, open-source (MIT), 100% on-device. No uploads, no accounts. Runs right here and on navigatorslab.com.">
+<meta property="og:title" content="Audio Trimmer — NavigatorsLab Tools">
+<meta property="og:description" content="Cut voice notes and clips on a waveform">
+<meta property="og:image" content="./og.png">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+<style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(900px 500px at 15% -10%, rgba(56,189,248,.16), transparent 60%),
+                        radial-gradient(800px 500px at 110% 10%, rgba(167,139,250,.14), transparent 55%), #0b0f17;
+      color: #e7ecf5; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55; }
+    main { max-width: 960px; margin: 0 auto; padding: 48px 20px 64px; }
+    .tile { width: 76px; height: 76px; display: grid; place-items: center; font-size: 38px;
+      border-radius: 20px; background: linear-gradient(135deg, rgba(56,189,248,.25), rgba(167,139,250,.25));
+      border: 1px solid rgba(148,163,184,.25); }
+    h1 { margin: 18px 0 6px; font-size: 34px; letter-spacing: -0.5px; }
+    .tag { color: #9fb0c8; font-size: 18px; margin: 0 0 18px; }
+    .badges span { display: inline-block; margin: 0 8px 8px 0; padding: 4px 12px; border-radius: 999px;
+      font-size: 13px; color: #cbd5e1; border: 1px solid rgba(148,163,184,.3); background: rgba(148,163,184,.08); }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 22px 0 8px; }
+    .btn { display: inline-block; padding: 12px 22px; border-radius: 12px; text-decoration: none; font-weight: 700; }
+    .primary { color: #06121f; background: linear-gradient(135deg, #67e8f9, #a78bfa); }
+    .ghost { color: #e7ecf5; border: 1px solid rgba(148,163,184,.4); }
+    .shot { width: 100%; border-radius: 14px; border: 1px solid rgba(148,163,184,.25); margin: 26px 0 6px; }
+    .cap { color: #64748b; font-size: 13px; text-align: center; margin: 0 0 30px; }
+    h2 { font-size: 22px; margin: 40px 0 12px; }
+    .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+    .feats li { padding: 14px 16px; border-radius: 12px; background: rgba(148,163,184,.07);
+      border: 1px solid rgba(148,163,184,.18); font-size: 15px; }
+    ol.steps { padding-left: 20px; color: #cdd8e6; }
+    ol.steps li { margin: 10px 0; }
+    ol.steps b { color: #e7ecf5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+    .grid a { display: block; padding: 12px 14px; border-radius: 12px; text-decoration: none;
+      color: #cdd8e6; background: rgba(148,163,184,.06); border: 1px solid rgba(148,163,184,.16); font-size: 14px; }
+    .grid a:hover { border-color: rgba(103,232,249,.5); color: #e7ecf5; }
+    .grid a b { display: block; color: #e7ecf5; font-size: 15px; margin-bottom: 2px; }
+    .note { border-left: 3px solid #67e8f9; padding: 10px 16px; background: rgba(56,189,248,.07);
+      border-radius: 0 10px 10px 0; color: #cdd8e6; }
+    footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid rgba(148,163,184,.18);
+      color: #64748b; font-size: 14px; }
+    footer a { color: #94a3b8; }
+    a { color: #7dd3fc; }
+</style>
+</head>
+<body>
+<main>
+  <div class="tile" aria-hidden="true">🎧</div>
+  <h1>Audio Trimmer</h1>
+  <p class="tag">Cut voice notes and clips on a waveform</p>
+  <div class="badges"><span>🆓 free &amp; open source (MIT)</span><span>🔒 nothing is uploaded</span><span>📶 works offline</span><span>📱 mobile friendly</span></div>
+  <div class="cta">
+    <a class="btn primary" href="./demo.html">Run it right here &rarr;</a>
+    <a class="btn ghost" href="https://navigatorslab.com/Audio-Trimmer">navigatorslab.com/Audio-Trimmer</a>
+  </div>
+  <img class="shot" src="./shot.png" alt="Audio Trimmer in action">
+  <p class="cap">Audio Trimmer mid-task — this demo runs entirely on this page's own GitHub Pages site.</p>
+
+  <h2>What it does</h2>
+  <ul class="feats">
+      <li>Trim voice notes and clips with sample-accurate precision on a waveform</li>
+      <li>Fade in/out and one-click peak normalize</li>
+      <li>Export WAV or MP3 (self-hosted LAME) — 100% offline</li>
+  </ul>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+      <li><b>Step 1.</b> Drop a voice note</li>
+      <li><b>Step 2.</b> Drag the selection on the waveform, add fades</li>
+      <li><b>Step 3.</b> Export WAV or MP3</li>
+  </ol>
+
+  <div class="note"><b>Private by design.</b> Files are processed on <em>your</em> device and never
+  sent to any server. No accounts, no tracking, no cookies, nothing retained. Prefer the hub?
+  The same tool lives at <a href="https://navigatorslab.com/tools/audio.html">https://navigatorslab.com/tools/audio.html</a>.</div>
+
+  <h2>The suite: 16 tools, one zero-upload promise</h2>
+  <div class="grid">
+      <a href="https://navigatorslab.com/tools/exif.html"><b>🛡 Photo Privacy Kit</b>Strip GPS, camera model and timestamps before posting</a>
+      <a href="https://navigatorslab.com/tools/metadata.html"><b>🔍 Metadata & Hidden-Data Checker</b>See what's really inside a file — then strip it</a>
+      <a href="https://navigatorslab.com/tools/shrink.html"><b>🗜 Image Shrinker</b>Hit “max 2 MB” portal limits without TinyPNG</a>
+      <a href="https://navigatorslab.com/tools/scan.html"><b>📄 Scan & Screenshot Cleaner</b>Phone photos of documents → clean, straight PDFs</a>
+      <a href="https://navigatorslab.com/tools/sign.html"><b>✍ Local E-Sign Pad</b>Sign this lease tonight — not DocuSign</a>
+      <a href="https://navigatorslab.com/tools/receipts.html"><b>🧾 Receipts → One PDF</b>Shoebox of receipt photos → one date-sorted PDF</a>
+      <a href="https://navigatorslab.com/tools/ocr.html"><b>🔢 Receipt OCR → CSV</b>Read totals off receipt photos, export for expenses</a>
+      <a href="https://navigatorslab.com/tools/qr.html"><b>🔳 QR Studio</b>Generate QR codes and decode QR images — no site sees them</a>
+      <a href="https://navigatorslab.com/tools/invoice.html"><b>🧮 Invoice / Quote Generator</b>One-person shops: hours in, clean PDF out</a>
+      <a href="https://navigatorslab.com/tools/rename.html"><b>🗂 Batch Rename & Sort</b>IMG_5847.jpg → 2026-09-05-receipt-home-depot.jpg</a>
+      <a href="https://navigatorslab.com/tools/printprep.html"><b>🖨 Print-Shop Prep</b>Exact sizes, bleed, DPI checks, print-ready PDF</a>
+      <a href="https://navigatorslab.com/tools/pdfpages.html"><b>📑 PDF Pages</b>Reorder, rotate, delete and extract PDF pages</a>
+      <a href="https://navigatorslab.com/tools/textdiff.html"><b>🔬 Text Diff</b>Compare two texts with word-level highlights</a>
+      <a href="https://navigatorslab.com/reimagine/"><b>🎨 Reimagine</b>Redesign any HTML page from its own content</a>
+      <a href="https://navigatorslab.com/tools/textstats.html"><b>📊 Text Stats</b>Words, reading time, readability, keyword density</a>
+  </div>
+
+  <footer>
+    <b>NavigatorsLab Tools</b> — free &amp; open source (MIT).
+    <a href="https://navigatorslab.com/tools/">Hub</a> · <a href="https://github.com/Kayforkind/NavigatorsLab-Tools">Source</a> ·
+    <a href="https://navigatorslab.com/tools/agents.html">Agent mode</a> · <a href="https://navigatorslab.com/tools/llms.txt">llms.txt</a> ·
+    MCP: <code>POST https://navigatorslab.com/tools/mcp</code>
+  </footer>
+</main>
+</body>
+</html>

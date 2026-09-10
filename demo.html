@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta http-equiv="Content-Security-Policy" content="default-src &#39;none&#39;; script-src &#39;self&#39; &#39;wasm-unsafe-eval&#39; blob:; style-src &#39;self&#39; &#39;unsafe-inline&#39;; img-src &#39;self&#39; data: blob:; media-src &#39;self&#39; blob:; font-src &#39;self&#39; data:; connect-src &#39;self&#39; blob: data:; worker-src &#39;self&#39; blob:; child-src &#39;self&#39; blob:; form-action &#39;none&#39;; base-uri &#39;none&#39;">
+
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Audio Trimmer — NavigatorsLab Tools</title>
+  <meta name="description" content="Trim voice notes and podcast clips on a waveform, export WAV or MP3. Entirely in your browser." />
+  <meta name="theme-color" content="#0b0f17" />
+  <meta property="og:title" content="Audio Trimmer — NavigatorsLab Tools" />
+  <meta property="og:description" content="Trim voice notes and podcast clips on a waveform, export WAV or MP3. Entirely in your browser." />
+  <meta property="og:type" content="website" />
+  <meta property="og:image" content="https://navigatorslab.com/tools/og-audio.png" />
+  <meta property="og:url" content="https://navigatorslab.com/tools/audio" />
+  <meta name="twitter:card" content="summary_large_image" />
+  <meta name="twitter:title" content="Audio Trimmer — NavigatorsLab Tools" />
+  <meta name="twitter:description" content="Trim voice notes and podcast clips on a waveform, export WAV or MP3. Entirely in your browser." />
+  <meta name="twitter:image" content="https://navigatorslab.com/tools/og-audio.png" />
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>" />
+  <script type="module" crossorigin src="./assets/audio-B-xWoISc.js"></script>
+  <link rel="modulepreload" crossorigin href="./assets/modulepreload-polyfill-B5Qt9EMX.js">
+  <link rel="modulepreload" crossorigin href="./assets/preload-helper-Dp1pzeXC.js">
+  <link rel="modulepreload" crossorigin href="./assets/dom-CdRtKgMN.js">
+  <link rel="modulepreload" crossorigin href="./assets/agent-BXrVPJYt.js">
+  <link rel="stylesheet" crossorigin href="./assets/styles-DxO-VUmL.css"></head>
+<body>
+  <header class="nl-top">
+    <a class="brand" href="./index.html">🧭 NavigatorsLab <b>Tools</b></a>
+    <span class="spacer"></span>
+    <a class="plain" href="./index.html">← All tools</a>
+  </header>
+
+  <main class="wrap narrow">
+    <h1>🎧 Audio Trimmer</h1>
+    <p class="sub">
+      Cut a voice note or podcast clip without uploading it anywhere. Drag the region handles on the waveform,
+      preview, export <b>WAV</b> (lossless) or <b>MP3</b>.
+    </p>
+
+    <div class="drop" id="dz">
+      <span class="big">🎙️</span>
+      <b>Drop an audio file</b> or click to pick — WAV / MP3 / M4A / OGG (whatever your browser decodes)
+    </div>
+
+    <div class="panel" id="panel" hidden>
+      <div class="row">
+        <button id="play" class="primary">▶️ Play selection</button>
+        <button id="stop">⏹ Stop</button>
+        <span class="mono" id="info"></span>
+      </div>
+      <canvas id="wave" width="960" height="180" style="width:100%; touch-action:none;"></canvas>
+      <div class="row">
+        <label>Start <input type="number" id="t0" min="0" step="0.01" style="width:100px" /> s</label>
+        <label>End <input type="number" id="t1" min="0" step="0.01" style="width:100px" /> s</label>
+        <label>Fade in <input type="number" id="fin" value="0" min="0" step="0.05" style="width:70px" /> s</label>
+        <label>Fade out <input type="number" id="fout" value="0" min="0" step="0.05" style="width:70px" /> s</label>
+        <label><input type="checkbox" id="norm" /> normalize to −0.1 dB</label>
+      </div>
+      <div class="row">
+        <label>Format</label>
+        <select id="fmt">
+          <option value="wav">WAV (lossless)</option>
+          <option value="mp3">MP3 (small)</option>
+        </select>
+        <label id="brWrap">Bitrate
+          <select id="bitrate">
+            <option value="320">320 kbps</option>
+            <option value="192" selected>192 kbps</option>
+            <option value="128">128 kbps</option>
+          </select>
+        </label>
+        <span class="grow" style="flex:1"></span>
+        <button id="exp" class="primary">⬇️ Export selection</button>
+      </div>
+      <div class="stat" id="stat" hidden></div>
+    </div>
+  </main>
+
+  <footer class="nl-foot">
+    <span class="lock">🔒 runs 100% in your browser — no uploads, no storage, no logs</span>
+    <span>·</span><a href="./index.html">all tools</a>
+    <span>·</span><a href="https://github.com/Kayforkind/NavigatorsLab-Tools">source (MIT)</a>
+  </footer>
+
+</body>
+</html>
