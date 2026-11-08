@@ -1,0 +1,180 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Audio Trimmer — free, in your browser — NavigatorsLab</title>
+<meta name="description" content="Cut voice notes and clips on a waveform Free, open-source (MIT), 100% on-device. No uploads, no accounts. Runs right here and on navigatorslab.com.">
+<meta property="og:title" content="Audio Trimmer — NavigatorsLab Tools">
+<meta property="og:description" content="Cut voice notes and clips on a waveform">
+<meta property="og:image" content="./og.png">
+<meta name="theme-color" content="#0b0f17">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🎧</text></svg>">
+<style>
+    :root { color-scheme: dark; }
+    * { box-sizing: border-box; }
+    body { margin: 0; background: radial-gradient(900px 500px at 15% -10%, rgba(56,189,248,.16), transparent 60%),
+                        radial-gradient(800px 500px at 110% 10%, rgba(167,139,250,.14), transparent 55%), #0b0f17;
+      color: #e7ecf5; font-family: ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, sans-serif;
+      line-height: 1.55; }
+    main { max-width: 960px; margin: 0 auto; padding: 48px 20px 64px; }
+    .tile { width: 76px; height: 76px; display: grid; place-items: center; font-size: 38px;
+      border-radius: 20px; background: linear-gradient(135deg, rgba(56,189,248,.25), rgba(167,139,250,.25));
+      border: 1px solid rgba(148,163,184,.25); }
+    h1 { margin: 18px 0 6px; font-size: 34px; letter-spacing: -0.5px; }
+    .tag { color: #9fb0c8; font-size: 18px; margin: 0 0 18px; }
+    .badges span { display: inline-block; margin: 0 8px 8px 0; padding: 4px 12px; border-radius: 999px;
+      font-size: 13px; color: #cbd5e1; border: 1px solid rgba(148,163,184,.3); background: rgba(148,163,184,.08); }
+    .cta { display: flex; gap: 12px; flex-wrap: wrap; margin: 22px 0 8px; }
+    .btn { display: inline-block; padding: 12px 22px; border-radius: 12px; text-decoration: none; font-weight: 700; }
+    .primary { color: #06121f; background: linear-gradient(135deg, #67e8f9, #a78bfa); }
+    .ghost { color: #e7ecf5; border: 1px solid rgba(148,163,184,.4); }
+    .shot { width: 100%; border-radius: 14px; border: 1px solid rgba(148,163,184,.25); margin: 26px 0 6px; }
+    .cap { color: #64748b; font-size: 13px; text-align: center; margin: 0 0 30px; }
+    h2 { font-size: 22px; margin: 40px 0 12px; }
+    .feats { display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 12px; padding: 0; margin: 0; list-style: none; }
+    .feats li { padding: 14px 16px; border-radius: 12px; background: rgba(148,163,184,.07);
+      border: 1px solid rgba(148,163,184,.18); font-size: 15px; }
+    ol.steps { padding-left: 20px; color: #cdd8e6; }
+    ol.steps li { margin: 10px 0; }
+    ol.steps b { color: #e7ecf5; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(210px, 1fr)); gap: 10px; }
+    .grid a { display: block; padding: 12px 14px; border-radius: 12px; text-decoration: none;
+      color: #cdd8e6; background: rgba(148,163,184,.06); border: 1px solid rgba(148,163,184,.16); font-size: 14px; }
+    .grid a:hover { border-color: rgba(103,232,249,.5); color: #e7ecf5; }
+    .grid a b { display: block; color: #e7ecf5; font-size: 15px; margin-bottom: 2px; }
+    .note { border-left: 3px solid #67e8f9; padding: 10px 16px; background: rgba(56,189,248,.07);
+      border-radius: 0 10px 10px 0; color: #cdd8e6; }
+    footer { margin-top: 56px; padding-top: 18px; border-top: 1px solid rgba(148,163,184,.18);
+      color: #64748b; font-size: 14px; }
+    footer a { color: #94a3b8; }
+    a { color: #7dd3fc; }
+    .io-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 12px; margin: 18px 0 12px; }
+    .io-card { padding: 14px 16px; border-radius: 12px; background: rgba(9,13,22,.9); border: 1px solid rgba(148,163,184,.22); }
+    .io-card small { display: block; font-size: 11px; font-weight: 700; text-transform: uppercase; letter-spacing: .06em; margin-bottom: 4px; color: #2dd4bf; }
+    .io-card b { display: block; color: #f8fafc; font-size: 15px; margin-bottom: 4px; }
+    .io-card span { color: #94a3b8; font-size: 13px; }
+    .io-proof { background: #060911; border: 1px solid rgba(45,212,191,.35); border-radius: 10px; padding: 11px 14px; font-family: ui-monospace, Consolas, monospace; font-size: 12.5px; color: #2dd4bf; overflow-x: auto; margin-bottom: 24px; }
+    .vid-wrap { width: 100%; aspect-ratio: 16 / 9; background: #05070d; border-radius: 14px; overflow: hidden; border: 1px solid rgba(94,234,212,.35); margin: 22px 0 8px; }
+    .vid-wrap video { width: 100%; height: 100%; object-fit: contain; display: block; background: #05070d; }
+</style>
+</head>
+<body>
+<main>
+  <div class="tile" aria-hidden="true">🎧</div>
+  <h1>Audio Trimmer</h1>
+  <p class="tag">Cut voice notes and clips on a waveform</p>
+  <div class="badges"><span>🆓 free &amp; open source (MIT)</span><span>🔒 nothing is uploaded</span><span>📶 works offline</span><span>📱 mobile friendly</span></div>
+  <div class="cta">
+    <a class="btn primary" href="./demo.html">Run it right here &rarr;</a>
+    <a class="btn ghost" href="https://navigatorslab.com/Audio-Trimmer">navigatorslab.com/Audio-Trimmer</a>
+    <a class="btn ghost" href="https://navigatorslab.com/tools/videos/notebooklm-overview.mp4">🎬 Watch Full Suite Usage Guide</a>
+  </div>
+
+  <h2>🔊 Narrated Step-by-Step Usage Tutorial Video (40s)</h2>
+  <div class="vid-wrap">
+    <video controls playsinline preload="metadata" poster="./poster.jpg" data-aspect="horizontal">
+      <source src="./demo.mp4" type="video/mp4">
+    </video>
+  </div>
+
+  <h2>📖 Detailed Step-by-Step User Guide</h2>
+  <div class="io-grid">
+    <div class="io-card"><small>Step 1: Drop a Voice Note, Podcast Clip, or Song · [Audio Dropzone (#dz)]</small><b>Drag and drop an audio file (`.wav`, `.mp3`, `.m4a`, `.aac`, `.ogg`, `.flac`) onto `#dz`.</b><span>✓ Result: Web Audio API decodes the audio buffer locally and renders the full waveform canvas (`#wave`).</span></div>
+    <div class="io-card"><small>Step 2: Inspect the Waveform & Select Start / End Times · [Waveform Canvas (#wave) & Time Inputs (#t0, #t1)]</small><b>Drag the left and right trim handles on `#wave` or type millisecond-accurate timestamps into **Start (`#t0`)** and **End (`#t1`)**. Click **Preview selection** to listen to the cut.</b><span>✓ Result: Exact sample boundaries are locked in with live duration readout.</span></div>
+    <div class="io-card"><small>Step 3: Add Smooth Fade-In / Fade-Out & Pick WAV or MP3 · [Fade Controls & Format Selector (#fmt)]</small><b>Configure fade-in/fade-out durations and select `wav` (uncompressed 16-bit PCM) or `mp3` (encoded via self-hosted `lamejs`) in `#fmt`.</b><span>✓ Result: Envelope and encoder settings are ready for local rendering.</span></div>
+    <div class="io-card"><small>Step 4: Click Export Trimmed Audio · [Export Button (#exp)]</small><b>Click **Export (`#exp`)**. The browser slices the PCM buffer, applies fade envelopes, encodes to WAV or MP3 via `lamejs`, and downloads the file.</b><span>✓ Result: Sample-accurate `.wav` or `.mp3` clip saved locally in under a second.</span></div>
+  </div>
+
+  <h2>🎛️ UI Controls &amp; Shortcuts Reference</h2>
+  <ul class="feats">
+      <li><code>Waveform Canvas (`#wave`)</code> — Interactive peak visualization for dragging trim start and end handles.</li>
+      <li><code>Start (`#t0`) & End (`#t1`) Inputs</code> — Numeric inputs (in seconds) for exact sample-accurate trimming.</li>
+      <li><code>Output Format (`#fmt`)</code> — Switch between 16-bit PCM `.wav` and self-hosted LAME `.mp3` encoding.</li>
+      <li><code>Export Button (`#exp`)</code> — Renders and downloads the trimmed audio clip.</li>
+  </ul>
+
+  <h2>💡 Pro Tips &amp; Real-World Workflows</h2>
+  <ul class="feats">
+      <li>Apply a `0.05s` to `0.15s` fade-in and fade-out when cutting spoken voice notes to eliminate zero-crossing pops at the start and end of the clip.</li>
+      <li>Choose `WAV` when exporting clips for video editors (Premiere, DaVinci Resolve, CapCut) and `MP3` when sharing voice notes over email or chat.</li>
+      <li>Because decoding and LAME MP3 encoding happen entirely in your tab, confidential interview recordings never touch a cloud transcription server.</li>
+  </ul>
+
+  <h2>⚡ Concrete Example: Input → Engine → Output</h2>
+  <div class="io-grid">
+    <div class="io-card">
+      <small>1 · Raw Input</small>
+      <b>40-Minute Interview Voice Note (voice-memo.wav)</b>
+      <span>Needs exact 01:12.40 – 01:44.80 highlight clip with smooth fade-in/out and normalized volume</span>
+    </div>
+    <div class="io-card">
+      <small>2 · On-Device Engine</small>
+      <b>Web Audio API sample-accurate waveform slice + linear gain ramps + peak normalization + self-hosted LAME MP3 encoder</b>
+      <span>Runs locally under strict Content-Security-Policy with zero network uploads.</span>
+    </div>
+    <div class="io-card">
+      <small>3 · Verified Output</small>
+      <b>interview-clip-normalized.mp3 (or .wav)</b>
+      <span>32.4s clip at -0.1 dBFS peak, 0.5s fade-in/out, valid ID3/MPEG frame sync encoded entirely in-tab</span>
+    </div>
+  </div>
+  <div class="io-proof">Slice: 1.00s..2.50s (66,150 samples) | Peak: 0.99 | Export: WAV PCM + LAME MP3 (0xFFFB) [OK]</div>
+
+  <img class="shot" src="./shot.png" alt="Audio Trimmer in action">
+  <p class="cap">Audio Trimmer mid-task — this demo runs entirely on this page's own GitHub Pages site.</p>
+
+  <h2>What it does</h2>
+  <ul class="feats">
+      <li>Trim voice notes and clips with sample-accurate precision on a waveform</li>
+      <li>Fade in/out and one-click peak normalize</li>
+      <li>Export WAV or MP3 (self-hosted LAME) â€” 100% offline</li>
+  </ul>
+
+  <h2>How it works</h2>
+  <ol class="steps">
+      <li><b>Step 1.</b> Drop a voice note</li>
+      <li><b>Step 2.</b> Drag the selection on the waveform, add fades</li>
+      <li><b>Step 3.</b> Export WAV or MP3</li>
+  </ol>
+
+  <div class="note"><b>Private by design.</b> Files are processed on <em>your</em> device and never
+  sent to any server. No accounts, no tracking, no cookies, nothing retained. Prefer the hub?
+  The same tool lives at <a href="https://navigatorslab.com/tools/audio.html">https://navigatorslab.com/tools/audio.html</a>.</div>
+
+  <h2>The suite: 24 projects, one zero-upload promise</h2>
+  <div class="grid">
+      <a href="https://navigatorslab.com/tools/exif.html"><b>🛡 Photo Privacy Kit</b>Strip GPS, camera model and timestamps before posting</a>
+      <a href="https://navigatorslab.com/tools/breachcheck.html"><b>🔐 Password Breach Checker</b>Has this password been breached? — it never leaves your tab</a>
+      <a href="https://navigatorslab.com/tools/metadata.html"><b>🔍 Metadata & Hidden-Data Checker</b>See what's really inside a file — then strip it</a>
+      <a href="https://navigatorslab.com/tools/shrink.html"><b>🗜 Image Shrinker</b>Hit “max 2 MB” portal limits without TinyPNG</a>
+      <a href="https://navigatorslab.com/tools/scan.html"><b>📄 Scan & Screenshot Cleaner</b>Phone photos of documents → clean, straight PDFs</a>
+      <a href="https://navigatorslab.com/tools/sign.html"><b>✍ Local E-Sign Pad</b>Sign this lease tonight — not DocuSign</a>
+      <a href="https://navigatorslab.com/tools/receipts.html"><b>🧾 Receipts → One PDF</b>Shoebox of receipt photos → one date-sorted PDF</a>
+      <a href="https://navigatorslab.com/tools/ocr.html"><b>🔢 Receipt OCR → CSV</b>Read totals off receipt photos, export for expenses</a>
+      <a href="https://navigatorslab.com/tools/qr.html"><b>🔳 QR Studio</b>Generate QR codes and decode QR images — no site sees them</a>
+      <a href="https://navigatorslab.com/tools/invoice.html"><b>🧮 Invoice / Quote Generator</b>One-person shops: hours in, clean PDF out</a>
+      <a href="https://navigatorslab.com/tools/rename.html"><b>🗂 Batch Rename & Sort</b>IMG_5847.jpg → 2026-09-05-receipt-home-depot.jpg</a>
+      <a href="https://navigatorslab.com/tools/printprep.html"><b>🖨 Print-Shop Prep</b>Exact sizes, bleed, DPI checks, print-ready PDF</a>
+      <a href="https://navigatorslab.com/tools/pdfpages.html"><b>📑 PDF Pages</b>Reorder, rotate, delete and extract PDF pages</a>
+      <a href="https://navigatorslab.com/tools/textdiff.html"><b>🔬 Text Diff</b>Compare two texts with word-level highlights</a>
+      <a href="https://navigatorslab.com/reimagine/"><b>🎨 Reimagine</b>Redesign any HTML page from its own content</a>
+      <a href="https://navigatorslab.com/tools/textstats.html"><b>📊 Text Stats</b>Words, reading time, readability, keyword density</a>
+      <a href="https://navigatorslab.com/pdf-studio/"><b>📜 PDF Studio</b>Edit the text inside your PDF — private, free, open source</a>
+      <a href="https://github.com/Kayforkind/design-health-action"><b>🩺 Design Health</b>18 deterministic design-quality checks for HTML — no LLM, no API key</a>
+      <a href="https://github.com/Kayforkind/skill-slice"><b>🔪 Skill Slice</b>Copy one Read-verified skill folder — a slice, not the pie</a>
+      <a href="https://github.com/Kayforkind/liecatchers"><b>🕵 liecatchers</b>Your agent said Done. Prove it — ten sensors, one RECEIPT.json</a>
+      <a href="https://github.com/Kayforkind/book-guide-mcp"><b>📚 Book Guide MCP</b>Ship improvements with your books — agents cite, run playbooks, learn</a>
+      <a href="https://github.com/Kayforkind/data-insights"><b>📡 Data Insights</b>Founder intelligence — daily & weekly tech signal briefs</a>
+      <a href="https://github.com/Kayforkind/iron-axe-legacy"><b>🪓 Iron Axe: Legacy</b>An original side-scrolling beat 'em up — Godot 4</a>
+  </div>
+
+  <footer>
+    <b>NavigatorsLab Tools</b> — free &amp; open source (MIT).
+    <a href="https://navigatorslab.com/tools/">Hub</a> · <a href="https://github.com/Kayforkind/NavigatorsLab-Tools">Source</a> ·
+    <a href="https://navigatorslab.com/tools/agents.html">Agent mode</a> · <a href="https://navigatorslab.com/tools/llms.txt">llms.txt</a> ·
+    MCP: <code>POST https://navigatorslab.com/tools/mcp</code>
+  </footer>
+</main>
+</body>
+</html>
